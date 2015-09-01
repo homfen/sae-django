@@ -32,11 +32,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +54,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'mysite.urls'
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -76,9 +79,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 MYSQL_HOST = 'w.rdc.sae.sina.com.cn'
 MYSQL_PORT = '3307'
-MYSQL_USER = '****************************************'
-MYSQL_PASS = '****************************************'
-MYSQL_DB   = 'app_***********'
+MYSQL_USER = '***************'
+MYSQL_PASS = '*********************************'
+MYSQL_DB   = 'app_*********************'
+
+from sae._restful_mysql import monkey
+monkey.patch()
 
 DATABASES = {
     'default': {
